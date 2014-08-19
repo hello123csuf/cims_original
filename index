@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="../../bootstrap_v3/docs-assets/ico/favicon.png">
+
+    <title>CIMS 3.1 - eNight</title>
+
+	<!-- latest font awesome -->
+	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" />
+	
+	<!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="css/bootstrap/bootstrap.min.slate.css" title="main" />
+
+	<!-- sidr dark theme css -->
+    <link rel="Stylesheet" href="http://www.berriart.com/sidr/javascripts/sidr/stylesheets/jquery.sidr.dark.css" />
+	
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" href="css/myStyles.css" />
+	<!-- Custom CSS -->
+    <link rel="stylesheet" href="css/simple-sidebar.css">
+		
+    <!-- Bootstrap-map-js -->
+    <link rel="stylesheet" href="http://js.arcgis.com/3.10/js/esri/css/esri.css" />
+	<link rel="stylesheet" type="text/css" href="css/bootstrapmap.css" />
+	
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="../bootstrap_v3/docs-assets/js/html5shiv.js"></script>
+      <script src="../bootstrap_v3/docs-assets/js/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+    <div class="navbar navbar-default navbar-fixed-top">		
+      <div class="container-fluid">
+        
+		<div class="navbar-header">
+          <a class="navbar-brand" href="#"><i class="fa fa-compass"></i> CIMS&nbsp;3.0&nbsp;-&nbsp;eNight</a></a>
+        </div>
+		<div class="nav-collapse collapse">
+			<ul class="nav">
+				<li><a href="#">Legend</a></li>
+				<li><a href="#">Map&nbsp;Settings</a></li>
+			</ul>
+		</div>
+		<!--/.nav-collapse -->
+        
+		<div class="navbar-inner">		  
+		  <ul class="nav navbar-nav navbar-right">
+			<!--<li class="active dropdown" id="basemapList">-->
+			<li class="dropdown" id="basemapList">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-map-marker fa-lg"></i> Basemaps<b class="caret"></b></a>
+              <ul class="dropdown-menu" id="myBasemaps">
+                <li><a href="#">Streets</a></li>
+                <li><a href="#">Imagery</a></li>
+                <li><a href="#">National Geographic</a></li>
+                <li><a href="#">Topographic</a></li>
+                <li><a href="#">Gray</a></li>
+                <li class="divider"></li>
+                <li><a href="#">Open Street Map</a></li>
+              </ul>
+            </li>
+			<li class="dropdown" id="theme-dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-tachometer"></i> Themes<b class="caret"></b></a>
+              <ul class="dropdown-menu" id="myThemes">
+                <li><a href="#" class="change-style-menu-item" rel="slate">Slate (Default)</a></li>
+				<li><a href="#" class="change-style-menu-item" rel="spacelab">SpaceLab</a></li>
+				<li><a href="#" class="change-style-menu-item" rel="cerulean">Cerulean</a></li>
+				<li><a href="#" class="change-style-menu-item" rel="amelia">Amelia</a></li>
+                <li><a href="#" class="change-style-menu-item" rel="united">United</a></li>
+              </ul>
+            </li>
+            <li>
+			  <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-link"></i> Links<b class="caret"></b></a>
+              <ul class="dropdown-menu" id="myLinks">
+                <li><a href="http://ccelection/wam">WAM</a></li>
+                <li><a href="http://cclerk.ci.la.ca.us">City Clerk Intranet</a></li>
+                <li><a href="http://lacity.org">City of Los Angeles</a></li>
+              </ul>
+			</li>
+            <li><a href="" data-toggle="modal" data-target="#modalAbout">About</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+		
+      </div>
+    </div>
+	
+    <!-- Bootstrap-map-js -->
+	<div id="HomeButton"></div>
+	<div id="searchAddress"></div>
+    <div id="mapDiv">
+		<div id="swipeDiv"></div>
+	</div>
+	<div id="legendDiv"></div>
+	
+	<!-- modal - About -->
+	<div class="modal fade" id="modalAbout" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<!--<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>-->
+					<h4 class="modal-title">Clerk Internet Mapping System v3.0</h4>
+				</div>
+				<div class="modal-body">
+					<p>
+						Developed by City Clerk Systems: Election Support
+						<br />
+						For support, please call: <span style="font-weight:bold;">213.978.2622</span>						
+					</p>
+					<p>
+						Copyright &copy; 2014 - Los Angeles City Clerk Election Division
+					</p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+				</div>
+			</div><!-- /.modal-content -->
+		</div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+	
+	<!-- ArcGIS Javascript API Reference -->
+    <script src="http://js.arcgis.com/3.10/"></script>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+	<!-- sidr js: jquery plugin for side menus -->
+    <script src="http://www.berriart.com/sidr/javascripts/sidr/jquery.sidr.min.js"></script>
+	<!-- my theme selector -->
+	<script src="javascript/themeSelector.js"></script>
+	
+	<script src="javascript/map.js"></script>
+
+
+
+
+
+
+  </body>
+</html>
